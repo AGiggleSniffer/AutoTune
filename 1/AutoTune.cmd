@@ -132,14 +132,14 @@ C:\Users\Public\Downloads\GlarySetup.exe
 echo.
 
 ::Open GlaryU
-echo=Open Glary Utilities?
+echo=Open Glary 1 Click Maintenance?
 choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
 echo=Opening Glary Utilities . . .
 echo.
-"C:\Program Files (x86)\Glary Utilities 5\Integrator.exe"
+"C:\Program Files (x86)\Glary Utilities 5\OneClickMaintenance.exe"
 :2
 echo.
 

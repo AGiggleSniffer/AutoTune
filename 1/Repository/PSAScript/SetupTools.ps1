@@ -5,7 +5,7 @@
 # Download Installers for Tools
 
 echo "Downloading CCleaner. . ."
-curl -O "C:\Users\Public\Downloads\CCleaner.exe" "https://bits.avcdn.net/productfamily_CCLEANER/insttype_FREE/platform_WIN_PIR/installertype_ONLINE/build_RELEASE"
+curl -O "C:\Users\Public\Downloads\CCSetup.exe" "https://bits.avcdn.net/productfamily_CCLEANER/insttype_FREE/platform_WIN_PIR/installertype_ONLINE/build_RELEASE"
 echo "Download Complete!"
 echo ""
 
