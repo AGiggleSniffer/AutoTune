@@ -55,7 +55,6 @@ C:\Users\Public\Downloads\CCSetup.exe /S
 echo=Install Complete!
 echo.
 echo=Installing Glary Utilities . . .
-echo.
 C:\Users\Public\Downloads\GlarySetup.exe /S
 echo=Install Complete!
 :2
@@ -73,7 +72,7 @@ echo.
 echo=Starting ADW Cleaner
 echo.
 echo=Running ADW Scan . . .
-start "C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot&pause
+"C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot&pause
 :2
 echo.
 
