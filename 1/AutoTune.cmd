@@ -44,12 +44,20 @@ echo=------------------------------------------------------------
 echo.
 
 ::Install Prompt
-echo=Download Latest Tool Setups?
+echo=Download and Install Latest Tools?
 choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\1\Repository\PSAScript\SetupTools.ps1'";
+echo=Installing CCleaner . . .
+C:\Users\Public\Downloads\CCSetup.exe /S
+echo=Install Complete!
+echo.
+echo=Installing Glary Utilities . . .
+echo.
+C:\Users\Public\Downloads\GlarySetup.exe /S
+echo=Install Complete!
 :2
 echo.
 
@@ -65,44 +73,30 @@ echo.
 echo=Starting ADW Cleaner
 echo.
 echo=Running ADW Scan . . .
-C:\Users\Public\Downloads\ADWCleaner.exe /eula /clean /noreboot
-pause
+start "C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot&pause
 :2
 echo.
 
 echo=------------------------------------------------------------
 echo.
 
-::Setup CC Prompt
-echo=Setup CCleaner?
+::Auto CClean with Previously Congigured Settings
+echo=Auto CClean with Previously Congigured Settings?
+echo.
+echo=###########################################
+echo=#                WARNING                  #
+echo=###########################################
+echo.
+echo=This will delete COOKIES and INTERNET HISTORY if you've never set up CCleaner
 choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
-echo=Setting up CCleaner
-echo=Finish Setup to continue . . .
-C:\Users\Public\Downloads\CCSetup.exe
+echo=Running Auto CCleaner
+echo.
+"C:\Program Files\CCleaner\CCleaner64.exe" /AUTO&pause
 :2
 echo.
-
-::Auto CClean with Previously Congigured Settings
-::echo=Auto CClean with Previously Congigured Settings?
-::echo.
-::echo=###########################################
-::echo=#                WARNING                  #
-::echo=###########################################
-::echo.
-::echo=This will delete COOKIES and INTERNET HISTORY if you've never set up CCleaner
-::choice /c yn
-::goto %ERRORLEVEL%
-:::1
-::echo.
-::echo=Running Auto CCleaner
-::echo.
-::"C:\Program Files\CCleaner\CCleaner64.exe" /AUTO
-::pause
-:::2
-::echo.
 
 ::Reg Cleaner
 echo=Open CCleaner?
@@ -116,19 +110,6 @@ echo=Opening CCleaner . . .
 echo.
 
 echo=------------------------------------------------------------
-echo.
-
-::Setup Glary Prompt
-echo=Setup Glary Utilities?
-choice /c yn
-goto %ERRORLEVEL%
-:1
-echo.
-echo=Setting up Glary Utilities
-echo.
-echo=Finish Setup to continue . . .
-C:\Users\Public\Downloads\GlarySetup.exe
-:2
 echo.
 
 ::Open GlaryU
@@ -155,7 +136,7 @@ echo.
 echo=Setting up Malwarebytes
 echo.
 echo=Finish Setup to continue . . .
-C:\Users\Public\Downloads\MBSetup.exe
+start C:\Users\Public\Downloads\MBSetup.exe
 :2
 echo.
 
