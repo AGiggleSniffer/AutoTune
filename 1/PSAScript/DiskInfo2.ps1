@@ -1,2 +1,0 @@
-# DiskType
-Get-PhysicalDisk

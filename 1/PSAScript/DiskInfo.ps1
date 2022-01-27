@@ -1,2 +1,0 @@
-# DiskSize
-Get-Volume
