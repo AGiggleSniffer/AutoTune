@@ -15,7 +15,7 @@ echo "Download Complete!"
 echo ""
 
 echo "Downloading ADW Cleaner. . ."
-curl -o "C:\Users\Public\Downloads\ADWCleaner.exe" "https://downloads.malwarebytes.com/file/adwcleaner?2"
+curl -o "C:\Users\Public\Downloads\ADWCleaner.exe" "https://adwcleaner.malwarebytes.com/adwcleaner?channel=release"
 echo "Download Complete!"
 echo ""
 

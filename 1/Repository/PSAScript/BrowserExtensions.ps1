@@ -115,13 +115,13 @@ echo "Extensions Added, Open Microsoft Edge to Finish"
 echo ""
 
 # FF Prompt
-$title    = 'Firefox Extensions'
-$question = 'Would you like to download Mozilla Firefox Extensions?'
-$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-if ($decision -eq 0) {
-    Write-Host 'Confirmed'
-} else {
-    Write-Host 'Cancelled'
-}
+#$title    = 'Firefox Extensions'
+#$question = 'Would you like to download Mozilla Firefox Extensions?'
+#$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+#if ($decision -eq 0) {
+#    Write-Host 'Confirmed'
+#} else {
+#    Write-Host 'Cancelled'
+#}
 
 pause

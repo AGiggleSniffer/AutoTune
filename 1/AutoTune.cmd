@@ -60,6 +60,19 @@ echo=Install Complete!
 :2
 echo.
 
+::Setup MB Prompt
+echo=Setup Malwarebytes?
+choice /c yn
+goto %ERRORLEVEL%
+:1
+echo.
+echo=Setting up Malwarebytes
+echo.
+echo=Finish Setup to continue . . .
+start C:\Users\Public\Downloads\MBSetup.exe
+:2
+echo.
+
 echo=------------------------------------------------------------
 echo.
 
@@ -72,7 +85,7 @@ echo.
 echo=Starting ADW Cleaner
 echo.
 echo=Running ADW Scan . . .
-"C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot&pause
+"C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot
 :2
 echo.
 
@@ -126,32 +139,18 @@ echo.
 echo=------------------------------------------------------------
 echo.
 
-::Setup MB Prompt
-echo=Setup Malwarebytes?
-choice /c yn
-goto %ERRORLEVEL%
-:1
-echo.
-echo=Setting up Malwarebytes
-echo.
-echo=Finish Setup to continue . . .
-start C:\Users\Public\Downloads\MBSetup.exe
-:2
-echo.
-
-::Open MB Prompt
+::Open Malwarebytes
 echo=Open Malwarebytes?
 choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
-echo=Opening up Malwarebytes . . .
+echo=Opening Malwarebytes . . .
 echo.
 "C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
 :2
 echo.
 
-echo.
 echo=------------------------------------------------------------
 echo.
 
