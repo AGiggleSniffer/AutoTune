@@ -83,7 +83,7 @@ goto %ERRORLEVEL%
 :1
 echo.
 echo=Starting System File Checker . . .
-start cmd.exe /k "dism /online /cleanup-image /restorehealth&sfc /scannow" /registry
+start cmd.exe /k "dism /online /cleanup-image /restorehealth&sfc /scannow"
 :2
 echo.
 
