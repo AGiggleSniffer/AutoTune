@@ -14,3 +14,4 @@ Auto Tuneup
   # Auto Reg cleaner????
   
   # Why does it take so long for system info?
+		# Can i display asset information better?
