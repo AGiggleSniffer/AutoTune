@@ -5,14 +5,14 @@ $choices  = '&Yes', '&No'
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
 
 # Chrome Prompt
-$title    = 'Chrome Extensions'
-$question = 'Would you like to download Google Chrome Extensions?'
-$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-if ($decision -eq 0) {
-    Write-Host 'Confirmed'
-} else {
-    Write-Host 'Cancelled'
-}
+#$title    = 'Chrome Extensions'
+#$question = 'Would you like to download Google Chrome Extensions?'
+#$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+#if ($decision -eq 0) {
+#    Write-Host 'Confirmed'
+#} else {
+#    Write-Host 'Cancelled'
+#}
 
 # UBlock
 $RegistryPath = 'HKLM:\Software\Wow6432Node\Google\Chrome\Extensions\cjpalhdlnbpafiamejdnhcphjbkeiagm'
@@ -43,31 +43,31 @@ echo "HTTPS Everywhere added to Registry"
 echo ""
 
 # Privacy Badger
-$RegistryPath = 'HKLM:\Software\Wow6432Node\Google\Chrome\Extensions\pkehgijcmpdhfbdbbnkijodmdjhbjlgp'
-$Name         = 'update_url'
-$Value        = 'https://clients2.google.com/service/update2/crx'
+#$RegistryPath = 'HKLM:\Software\Wow6432Node\Google\Chrome\Extensions\pkehgijcmpdhfbdbbnkijodmdjhbjlgp'
+#$Name         = 'update_url'
+#$Value        = 'https://clients2.google.com/service/update2/crx'
 
 # Create the key if it does not exist
-If (-NOT (Test-Path $RegistryPath)) {
-  New-Item -Path $RegistryPath -Force | Out-Null
-}  
+#If (-NOT (Test-Path $RegistryPath)) {
+#  New-Item -Path $RegistryPath -Force | Out-Null
+#}  
 # Now set the value
-New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType string -Force
-echo "Privacy Badger added to Registry"
-echo ""
+#New-ItemProperty -Path $RegistryPath -Name $Name -Value $Value -PropertyType string -Force
+#echo "Privacy Badger added to Registry"
+#echo ""
 
 echo "Extensions Added, Open Google Chrome to Finish"
 echo ""
 
 # Prompt for Edge Extensions
-$title    = 'MS Edge Extensions'
-$question = 'Would you like to download Microsoft Edge Extensions?'
-$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
-if ($decision -eq 0) {
-    Write-Host 'Confirmed'
-} else {
-    Write-Host 'Cancelled'
-}
+#$title    = 'MS Edge Extensions'
+#$question = 'Would you like to download Microsoft Edge Extensions?'
+#$decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+#if ($decision -eq 0) {
+#    Write-Host 'Confirmed'
+#} else {
+#    Write-Host 'Cancelled'
+#}
 
 # UBlock
 $RegistryPath = 'HKLM:\Software\Wow6432Node\Microsoft\Edge\Extensions\odfafepnkmbhccpbejgmiehpchacaeak'

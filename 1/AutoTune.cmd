@@ -1,30 +1,71 @@
 @echo off
+
+::This code block detects if the script is being running with admin PRIVILEGES If it isn't it pauses and then quits
+NET SESSION >nul 2>&1
+IF %ERRORLEVEL% EQU 0 (
+    ECHO Administrator PRIVILEGES Detected! 
+) ELSE (
+   echo ######## ########  ########   #######  ########  
+   echo ##       ##     ## ##     ## ##     ## ##     ## 
+   echo ##       ##     ## ##     ## ##     ## ##     ## 
+   echo ######   ########  ########  ##     ## ########  
+   echo ##       ##   ##   ##   ##   ##     ## ##   ##   
+   echo ##       ##    ##  ##    ##  ##     ## ##    ##  
+   echo ######## ##     ## ##     ##  #######  ##     ## 
+   echo.
+   echo.
+   echo ############# ERROR: ADMINISTRATOR PRIVILEGES REQUIRED ################
+   echo # This script must be run as administrator to work properly!          #
+   echo # Please right click on the script and select "Run As Administrator". #
+   echo #######################################################################
+   echo.
+   PAUSE
+   EXIT /B 1
+)
+
 echo.
 echo=------------------------------------------------------------
 echo.
 
-::Asset Profile
+::For Troubleshooting & Setup
 :: - FilePath
 echo=File Path
 ECHO:%PATH:;= & ECHO:%
+echo.
+
+:: Set script directory so it can be used from anywhere
+SET ThisScriptsDirectory=%~dp0
+SET PSS-DI-Path=%ThisScriptsDirectory%Repository\PSAScript\DiskInfo.ps1
+SET PSS-DI2-Path=%ThisScriptsDirectory%Repository\PSAScript\DiskInfo2.ps1
+SET PSS-ST-Path=%ThisScriptsDirectory%Repository\PSAScript\SetupTools.ps1
+SET PSS-BE-Path=%ThisScriptsDirectory%Repository\PSAScript\BrowserExtensions.ps1
 
 echo=------------------------------------------------------------
 
+::Asset Profile
 :: - Host Name + OS + RAM
 echo.
 systeminfo | findstr /b /c:"Host Name" /c:"OS Version" /c:"Total Physical Memory" /c:"System Manufacturer" /c:"System Model"
 echo.
 
-:: - CPU Name
-echo=CPU
-wmic cpu get name
+:: - Serial Number
+wmic bios get serialnumber
 
 :: - GPU Name
 echo=GPU
 wmic path win32_VideoController get name
 
-:: - Serial Number
-wmic bios get serialnumber
+:: - CPU Name
+echo=CPU
+wmic cpu get name
+
+echo=------------------------------------------------------------
+echo.
+
+:: - Disk Info
+echo=Disk Info:
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-DI-Path%'";
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-DI2-Path%'";
 
 echo=------------------------------------------------------------
 
@@ -35,13 +76,21 @@ echo.
 echo=------------------------------------------------------------
 echo.
 
-:: - Disk Info
-echo=Disk Info:
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\1\Repository\PSAScript\DiskInfo.ps1'";
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\1\Repository\PSAScript\DiskInfo2.ps1'";
+::DISM/SFC scan
+echo=Start System File Checker?
+choice /c yn
+goto %ERRORLEVEL%
+:1
+echo.
+echo=Starting System File Checker . . .
+start cmd.exe /k "dism /online /cleanup-image /restorehealth&sfc /scannow" /registry
+:2
+echo.
 
 echo=------------------------------------------------------------
 echo.
+
+
 
 ::Install Prompt
 echo=Download and Install Latest Tools?
@@ -49,7 +98,7 @@ choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\1\Repository\PSAScript\SetupTools.ps1'";
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-ST-Path%'";
 echo=Installing CCleaner . . .
 C:\Users\Public\Downloads\CCSetup.exe /S
 echo=Install Complete!
@@ -57,19 +106,11 @@ echo.
 echo=Installing Glary Utilities . . .
 C:\Users\Public\Downloads\GlarySetup.exe /S
 echo=Install Complete!
-:2
 echo.
-
-::Setup MB Prompt
-echo=Setup Malwarebytes?
-choice /c yn
-goto %ERRORLEVEL%
-:1
+echo=Installing Malwarebytes . . .
+C:\Users\Public\Downloads\MBSetup.exe /Silent
+echo=Install Complete!
 echo.
-echo=Setting up Malwarebytes
-echo.
-echo=Finish Setup to continue . . .
-start C:\Users\Public\Downloads\MBSetup.exe
 :2
 echo.
 
@@ -85,7 +126,18 @@ echo.
 echo=Starting ADW Cleaner
 echo.
 echo=Running ADW Scan . . .
-"C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot
+start cmd.exe /k "C:\Users\Public\Downloads\ADWCleaner.exe" /eula /clean /noreboot
+:2
+echo.
+
+::Open Malwarebytes
+echo=Open Malwarebytes?
+choice /c yn
+goto %ERRORLEVEL%
+:1
+echo.
+echo=Opening Malwarebytes . . .
+start /b cmd.exe /c "C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
 :2
 echo.
 
@@ -106,7 +158,7 @@ goto %ERRORLEVEL%
 echo.
 echo=Running Auto CCleaner
 echo.
-"C:\Program Files\CCleaner\CCleaner64.exe" /AUTO&pause
+start cmd.exe /k "C:\Program Files\CCleaner\CCleaner64.exe" /AUTO&pause
 :2
 echo.
 
@@ -117,7 +169,7 @@ goto %ERRORLEVEL%
 :1
 echo.
 echo=Opening CCleaner . . .
-"C:\Program Files\CCleaner\CCleaner64.exe" /registry
+start /b cmd.exe /c "C:\Program Files\CCleaner\CCleaner64.exe" /registry
 :2
 echo.
 
@@ -132,31 +184,24 @@ goto %ERRORLEVEL%
 echo.
 echo=Opening Glary Utilities . . .
 echo.
-"C:\Program Files (x86)\Glary Utilities 5\OneClickMaintenance.exe"
+start /b cmd.exe /c "C:\Program Files (x86)\Glary Utilities 5\OneClickMaintenance.exe"
 :2
 echo.
 
 echo=------------------------------------------------------------
 echo.
 
-::Open Malwarebytes
-echo=Open Malwarebytes?
+::Install Browser Extensions
+echo=Install Browser Extensions?
 choice /c yn
 goto %ERRORLEVEL%
 :1
-echo.
-echo=Opening Malwarebytes . . .
-echo.
-"C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-BE-Path%'";
 :2
 echo.
 
-echo=------------------------------------------------------------
-echo.
-
-::Browser Extension Install
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\1\Repository\PSAScript\PSAdmin(Extensions).cmd'";
-
 echo.
 echo=------------------------------------------------------------
 echo.
+
+pause

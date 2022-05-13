@@ -20,8 +20,8 @@ echo "Download Complete!"
 echo ""
 
 echo "Downloading Malwarebytes. . ."
-curl -o "C:\Users\Public\Downloads\MBSetup.exe" "https://downloads.malwarebytes.com/file/mb-windows"
+curl -o "C:\Users\Public\Downloads\MBSetup.exe" "https://ninite.com/malwarebytes/ninite.exe"
 echo "Download Complete!"
 echo ""
 
-Read-Host -Prompt "Press any key to continue"
+#Read-Host -Prompt "Press any key to continue"
