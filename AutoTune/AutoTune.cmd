@@ -108,7 +108,7 @@ C:\Users\Public\Downloads\GlarySetup.exe /S
 echo=Install Complete!
 echo.
 echo=Installing Malwarebytes . . .
-C:\Users\Public\Downloads\MBSetup.exe /Silent
+C:\Users\Public\Downloads\MBSetup.exe
 echo=Install Complete!
 echo.
 :2
@@ -202,6 +202,17 @@ echo.
 
 echo.
 echo=------------------------------------------------------------
+echo.
+
+::Open Malwarebytes
+echo=Open Malwarebytes?
+choice /c yn
+goto %ERRORLEVEL%
+:1
+echo.
+echo=Opening Malwarebytes . . .
+start /b cmd.exe /c "C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
+:2
 echo.
 
 pause
