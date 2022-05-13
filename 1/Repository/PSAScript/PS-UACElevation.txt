@@ -1,1 +1,0 @@
-﻿Start-Process powershell -verb runas -ArgumentList "C:\1\Repository\PSAScript\BrowserExtensions.ps1"
