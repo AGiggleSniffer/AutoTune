@@ -7,11 +7,6 @@ Auto Tuneup
 		if exist "%USERPROFILE%\Public\Desktop\Malwarebytes.lnk" del /f /q "%USERPROFILE%\Public\Desktop\Malwarebytes.lnk"
 		if exist "%USERPROFILE%\Default\Desktop\Malwarebytes.lnk" del /f /q "%USERPROFILE%\Default\Desktop\Malwarebytes.lnk"
 		if exist "%ALLUSERSPROFILE%\Desktop\Malwarebytes.lnk" del /f /q "%ALLUSERSPROFILE%\Desktop\Malwarebytes.lnk"
-
-
-
-
-
-
-
-
+  # WASP Powershell Module to automate inputs (for small things like closing MB ninite install)
+  # CCleaner .inf/.ini files to configure CCleaner to auto clean 
+  # Auto Reg cleaner????
