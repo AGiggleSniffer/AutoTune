@@ -90,8 +90,6 @@ echo.
 echo=------------------------------------------------------------
 echo.
 
-
-
 ::Install Prompt
 echo=Download and Install Latest Tools?
 choice /c yn
