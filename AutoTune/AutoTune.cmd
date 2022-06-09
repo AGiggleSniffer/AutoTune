@@ -190,7 +190,7 @@ echo=------------------------------------------------------------
 echo.
 
 ::Install Browser Extensions
-echo=Install Browser Extensions?
+echo=Install UBlock Origin?
 choice /c yn
 goto %ERRORLEVEL%
 :1
