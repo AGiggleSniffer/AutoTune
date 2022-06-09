@@ -69,5 +69,3 @@ echo ""
 #} else {
 #    Write-Host 'Cancelled'
 #}
-
-pause
