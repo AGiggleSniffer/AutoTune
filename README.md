@@ -15,3 +15,6 @@ Auto Tuneup
   
   # Why does it take so long for system info?
 		# Can i display asset information better?
+		
+  # Better SFC scan
+  		# Run SFC, check if intgrity volumes were found and if dism is needed, if so run dism/sfc automatically
