@@ -39,6 +39,7 @@ SET PSS-DI-Path=%ThisScriptsDirectory%Repository\PSAScript\DiskInfo.ps1
 SET PSS-DI2-Path=%ThisScriptsDirectory%Repository\PSAScript\DiskInfo2.ps1
 SET PSS-ST-Path=%ThisScriptsDirectory%Repository\PSAScript\SetupTools.ps1
 SET PSS-BE-Path=%ThisScriptsDirectory%Repository\PSAScript\BrowserExtensions.ps1
+SET PSS-NF-PATH=%ThisScriptsDirectory%Repository\PSAScript\NOCFolder.ps1
 
 echo=------------------------------------------------------------
 
@@ -105,10 +106,30 @@ echo=Installing Glary Utilities . . .
 C:\Users\Public\Downloads\GlarySetup.exe /S
 echo=Install Complete!
 echo.
-echo=Installing Malwarebytes . . .
-C:\Users\Public\Downloads\MBSetup.exe
+echo=Installing Glary & Malwarebytes . . .
+C:\Users\Public\Downloads\Glary&MBSetup.exe
 echo=Install Complete!
 echo.
+:2
+echo.
+
+echo.
+echo=------------------------------------------------------------
+echo.
+
+echo Making NOC Folder. . .
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-NF-Path%'";
+echo Complete!
+echo.
+
+::Run remote.msi for calling card
+echo=Repair or Install NOC Calling Card?
+choice /c yn
+goto %ERRORLEVEL%
+:1
+echo.
+start /b cmd.exe /c "C:\Users\Public\Downloads\Installers-for-Autotune-main\Noc_Downloads\remote.msi"
+echo=Opening MSI Installer. . .
 :2
 echo.
 
