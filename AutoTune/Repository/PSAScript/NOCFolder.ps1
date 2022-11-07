@@ -9,7 +9,7 @@ If (-NOT (Test-Path $TargetDirectory)) {
   Copy-Item "$ParentPath\nerd.ico" -Destination "C:\Users\Public\Desktop\Nerds On Call 800-919NERD"
 }
 Else  {
-  quit
+  exit
 }
 
 #Write desktop.ini values for nerds face icon
