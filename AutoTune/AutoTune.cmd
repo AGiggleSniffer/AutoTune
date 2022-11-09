@@ -96,20 +96,20 @@ echo=Download and Install Latest Tools?
 choice /c yn
 goto %ERRORLEVEL%
 :1
+
 echo.
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-ST-Path%'";
+
 echo=Installing CCleaner . . .
 C:\Users\Public\Downloads\CCSetup.exe /S
 echo=Install Complete!
 echo.
-echo=Installing Glary Utilities . . .
-C:\Users\Public\Downloads\GlarySetup.exe /S
+
+echo=Installing Glary and Malwarebytes . . .
+C:\Users\Public\Downloads\GlaryMBSetup.exe
 echo=Install Complete!
 echo.
-echo=Installing Glary & Malwarebytes . . .
-C:\Users\Public\Downloads\Glary&MBSetup.exe
-echo=Install Complete!
-echo.
+
 :2
 echo.
 
@@ -117,7 +117,7 @@ echo.
 echo=------------------------------------------------------------
 echo.
 
-echo Making NOC Folder. . .
+echo=Making NOC Folder. . .
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%PSS-NF-Path%'";
 echo Complete!
 echo.
@@ -128,7 +128,7 @@ choice /c yn
 goto %ERRORLEVEL%
 :1
 echo.
-start /b cmd.exe /c "C:\Users\Public\Downloads\Installers-for-Autotune-main\Noc_Downloads\remote.msi"
+start /b cmd.exe /c "C:\Users\Public\Downloads\remote.msi"
 echo=Opening MSI Installer. . .
 :2
 echo.
@@ -223,15 +223,6 @@ echo.
 echo=------------------------------------------------------------
 echo.
 
-::Open Malwarebytes
-echo=Open Malwarebytes?
-choice /c yn
-goto %ERRORLEVEL%
-:1
-echo.
-echo=Opening Malwarebytes . . .
-start /b cmd.exe /c "C:\Program Files\Malwarebytes\Anti-Malware\mbam.exe"
-:2
-echo.
+echo=Script Complete.
 
 pause

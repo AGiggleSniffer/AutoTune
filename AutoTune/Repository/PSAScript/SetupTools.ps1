@@ -16,9 +16,9 @@ else {
     echo "CCleaner Already Downloaded!"
 }
 
-If (-NOT (Test-Path "C:\Users\Public\Downloads\Glary&MBSetup.exe" -PathType Leaf)) {
-    echo "Downloading Glary & Malwarebytes. . ."
-    curl -o "C:\Users\Public\Downloads\Glary&MBSetup.exe" "https://ninite.com/glary-malwarebytes/ninite.exe"
+If (-NOT (Test-Path "C:\Users\Public\Downloads\GlaryMBSetup.exe" -PathType Leaf)) {
+    echo "Downloading Glary and Malwarebytes. . ."
+    curl -o "C:\Users\Public\Downloads\GlaryMBSetup.exe" "https://ninite.com/glary-malwarebytes/ninite.exe"
     echo "Download Complete!"
     echo ""
 }
